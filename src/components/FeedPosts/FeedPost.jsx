@@ -1,13 +1,19 @@
-import { Box,Image } from "@chakra-ui/react"
-import PostHeader from "./PostHeader"
-import PostFooter from "./PostFooter"
-const FeedPost = () => {
+import { Box,Image  } from "@chakra-ui/react";
+import PostHeader from "./PostHeader";
+import PostFooter from "./PostFooter";
+// eslint-disable-next-line react/prop-types
+const FeedPost = ({img,username,avatar}) => {
+  
   return <>
-      <PostHeader />
-      <Box my={2} >
-        <Image src='/img1.png' alt="User Profile pic"/>
+      <PostHeader username={username} avatar={avatar} />
+      
+      <Box my={2} 
+        borderRadius={4}
+        overflow={"hidden"}
+      >
+        <Image src={img} alt={username}/>
       </Box>
-      <PostFooter />
+      <PostFooter username={username} />
       </>
 }
 
