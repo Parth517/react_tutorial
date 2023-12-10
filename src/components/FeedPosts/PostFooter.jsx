@@ -2,7 +2,7 @@
 import { Box,Button, Flex, Input, InputGroup, InputRightElement, Text } from "@chakra-ui/react"
 import { useState } from "react"
 import {NotificationsLogo,UnlikeLogo,CommentLogo} from '../../assets/constants';
-const PostFooter = ({username}) => {
+const PostFooter = ({username,isProfilePage}) => {
   const [liked,setLiked]=useState(false)
   const [likes,setLikes]=useState(1000)
 
@@ -16,7 +16,7 @@ const PostFooter = ({username}) => {
     }
   }
   return (
-    <Box my={4}>
+    <Box my={4} marginTop={"auto"}>
      <Flex alignItems={"center"} gap={4} w={"full"} pt={0} mb={2} mt={2} >
       <Box onClick={handleLike}
         cursor={"pointer"}
@@ -32,7 +32,9 @@ const PostFooter = ({username}) => {
      <Text fontWeight={600} fontSize={"sm"}>
       {likes} likes
      </Text>
-     <Text fontWeight={700} fontSize={"sm"}>
+    {!isProfilePage && (
+      <>
+      <Text fontWeight={700} fontSize={"sm"}>
       {username} {" "}
       <Text as='span' fontWeight={400}>
         Feels Good 
@@ -41,6 +43,8 @@ const PostFooter = ({username}) => {
      <Text fontSize={"sm"} color={'gray'}>
       View all 1,000 comments
      </Text>
+      </>
+    )}
 
      <Flex
       alignItems={"center"}
